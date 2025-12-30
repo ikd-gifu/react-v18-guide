@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-   
+    <script src="../../../../libs/react.development.js"></script>
+    <script src="../../../../libs/react-dom.development.js"></script>
+    <script src="../../../../libs/babel-standalone.js"></script> <!-- JSXを変換するためのBabel -->
 </head>
 <body>
-    
+    <!--Reactアプリケーションをマウント（描画）するための空のコンテナ要素-->
+    <div id="app"></div>
+    <!-- Babelがこのスクリプト内のJSX記法をブラウザが理解できる通常のJavaScriptに変換 -->
+    <script type="text/babel">
+      // id="app"の要素を取得し、appEl変数に格納
+      const appEl = document.querySelector('#app');
+      const root = ReactDOM.createRoot(appEl);
+      // JSX記法
+      root.render(<h1>こんにちは</h1>)
+    </script>
 </body>
 </html>
