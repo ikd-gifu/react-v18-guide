@@ -9,3 +9,10 @@
 npm create vite@latest my-react-app -- --template react
 npm create vite@latest my-react-app -- --template react-swc
 ```
+
+## 参考
+# Create React Appによるプロジェクトの作成
+npx create-react-app {プロジェクト名}
+
+# create-react-appドキュメント
+npm docs create-react-app
