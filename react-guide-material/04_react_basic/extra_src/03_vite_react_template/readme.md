@@ -12,7 +12,11 @@ npm create vite@latest my-react-app -- --template react-swc
 
 ## 参考
 ### Create React Appによるプロジェクトの作成
+```bash
 npx create-react-app {プロジェクト名}
+```
 
 ### create-react-appドキュメント
+```bash
 npm docs create-react-app
+```
