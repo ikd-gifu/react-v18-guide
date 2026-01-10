@@ -19,4 +19,7 @@ const ChildMemo = memo(({ countB, onClick }) => {
   );
 });
 
+// memoでラップされたコンポーネントにdisplayNameが設定されていない場合、ESLintのreact/display-nameエラーが発生するため、設定する
+ChildMemo.displayName = 'ChildMemo';
+
 export default ChildMemo;

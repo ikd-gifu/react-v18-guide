@@ -7,7 +7,8 @@ const Example = () => {
   const [countB, setCountB] = useState(0);
 
   const clickHandler = useCallback(() => {
-    setCountB(countB + 1);
+    console.log('countB', countB);
+    setCountB(countB + 1); // countBに依存しているので、countBが変更される際にonClickつまりclickHandlerも新しい関数として再生成する必要がある。→ChildのuseMemoの依存配列にonClickも追加する必要がある
   },[countB]);
   
   return (
@@ -28,6 +29,7 @@ const Example = () => {
       <div>
         <p>ボタンAクリック回数：{countA}</p>
       </div>
+      {/* // clickHandlerをpropsで渡す */}
       <Child countB={countB} onClick={clickHandler}/>
     </div>
   );

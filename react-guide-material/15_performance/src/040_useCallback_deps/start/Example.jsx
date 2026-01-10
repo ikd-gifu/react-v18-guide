@@ -8,8 +8,8 @@ const Example = () => {
   const [countB, setCountB] = useState(0);
 
   const clickHandler = useCallback(() => {
-    setCountB((pre) => pre + 1);
-  }, [])
+    setCountB(countB + 1);
+  }, [countB]) // 依存配列に含めた値が更新されると関数が再生成される
 
   return (
     <div className="parent">
