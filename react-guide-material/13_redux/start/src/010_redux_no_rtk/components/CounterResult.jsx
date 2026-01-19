@@ -1,7 +1,11 @@
 import { useCounter } from "../context/CounterContext";
+import { useSelector } from "react-redux";
 
 const CounterResult = () => {
-  const state = useCounter();
+  // const state = useCounter();
+  // stateが更新されるとuseSelectorでstoreのstateを取得
+  // 画面（関数コンポーネント：CounterResult）が再レンダリングされる
+  const state = useSelector(state => state);
   return <h3>{state}</h3>;
 };
 
