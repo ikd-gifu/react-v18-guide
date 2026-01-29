@@ -1,6 +1,6 @@
 # Install
 
-```TypeScript CLI
+```TypeScript CLI グローバルにインストール
 npm install -g typescript
 ```
 
