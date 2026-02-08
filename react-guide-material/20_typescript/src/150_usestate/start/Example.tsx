@@ -19,6 +19,8 @@ const Example = () => {
   // useState<number>
   useState(0);
   
+  // useState に型を定義する方法 User[]: User 型のオブジェクトの配列
+  // <> の中にジェネリック型を指定する
   const [ users, setUsers ] = useState<User[]>([{name: "Tom", age: 22}]);
 
   const [ todos, setTodos ] = useState<Todo[]>([{ id: 1, text: "Homework" }]);

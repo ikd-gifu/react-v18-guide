@@ -9,6 +9,7 @@ type HelloProps = {
         // (
         //     props: P,
 const Hello: React.FC<HelloProps> = (props) => {
+  // children は コンポーネントのタグで囲まれた中身 を表す特殊な props
   return <h1>Hello, {props.text}! {props.children}</h1>;
 }
 
@@ -21,6 +22,7 @@ type FnProps = {
 export const Btn: React.FC<FnProps> = (props) => {
   // props.fn - propsとして親コンポーネントから関数を受け取る
   // props.fn('TypeScript') - 受け取った関数を'TypeScript'という引数で実行する
+  // onClick={でボタンクリック時に実行する関数を指定している
   return <button onClick={() => props.fn('TypeScript')}>ボタン</button>
 }
 

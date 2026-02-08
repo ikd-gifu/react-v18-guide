@@ -1,6 +1,15 @@
 import React, { useCallback, useState } from "react";
 import Child from "./Child";
 import { use } from "react";
+// useCallback: 関数の参照をメモ化する。子コンポーネントに渡す関数や、
+// useEffectの依存に入れる関数の再生成を抑えたいときに使う。
+
+// 使い分けの目安
+
+// 副作用を「実行する」→ useEffect
+// 関数の再生成を「抑える」→ useCallback
+// 「副作用があるからuseCallback」は誤り。副作用はuseEffectに置く。
+// 「とりあえずuseCallback」は不要。参照の安定化が必要なときだけ。
 
 const Example = () => {
   console.log("Parent render");
