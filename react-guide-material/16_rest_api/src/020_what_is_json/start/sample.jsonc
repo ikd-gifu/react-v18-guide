@@ -1,3 +1,8 @@
+// POINT JSONとは
+// JavaScript Object Notation の略称
+// JavaScript のデータ定義文をベースとした、簡易的なデータ定義言語
+// .jsonファイルにはコメントを書くことができないが、.jsoncにするとコメントを書くことができる。
+
 [
   // オブジェクトのkeyはダブルコーテーションを使用する
   {
@@ -7,7 +12,7 @@
     "hobbies": [
       "soccer"
     ],
-    "premiumAccount": true
+    "premiumAccount": true // jsonでは末尾のカンマも禁止
   },
   {
     "id": 2,

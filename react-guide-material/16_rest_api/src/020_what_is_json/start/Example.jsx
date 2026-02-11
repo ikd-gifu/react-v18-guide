@@ -1,5 +1,5 @@
 const Example = () => {
-  const usersData = [
+  const usersData = [ // JSのオブジェクトや配列 JSONではない
     {
       id: 1,
       username: "hoge太郎",
@@ -29,7 +29,7 @@ const Example = () => {
   // JSON形式の文字列が出力される
   console.log(typeof usersDataString === 'string');
 
-  // JSON形式の文字列をJavaScriptが認識できる形に変換する
+  // JSON形式の文字列をJavaScriptが認識できる形に変換する(JSオブジェクトに変換する)
   console.log(JSON.parse(usersDataString));
 
 };
