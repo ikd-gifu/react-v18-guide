@@ -1,4 +1,6 @@
-import { createContext, useContext, useReducer } from "react";
+import { use } from "react";
+import { createContext, useContext, useEffect,useReducer } from "react";
+import todoApi from "../api/todo";
 
 const TodoContext = createContext();
 const TodoDispatchContext = createContext();
@@ -23,12 +25,18 @@ const todosList = [
 
 const todoReducer = (todos, action) => {
   switch (action.type) {
+    case "todo/init":
+      // 渡ってきた結果をそのままtodoに保持する
+      return [...action.todos];
+
     case "todo/add":
       return [...todos, action.todo];
+
     case "todo/delete":
       return todos.filter((todo) => {
         return todo.id !== action.todo.id;
       });
+
     case "todo/update":
       return todos.map((_todo) => {
         return _todo.id === action.todo.id
@@ -41,7 +49,16 @@ const todoReducer = (todos, action) => {
 };
 
 const TodoProvider = ({ children }) => {
-  const [todos, dispatch] = useReducer(todoReducer, todosList);
+  const [todos, dispatch] = useReducer(todoReducer, []);
+
+  useEffect(() => {
+    // promiseを返すので、thenで受け取るからawaitで受け取る
+    // result.dataがtodosの配列になっている。これがthenの引数に渡される
+    todoApi.getAll().then(todos => {
+      // stateにtodosをセットするために、dispatchを呼び出す
+      dispatch({ type: 'todo/init', todos })
+    })
+  }, []); // 初回のみ実行されるように、第二引数に空の配列を指定する
 
   return (
     <TodoContext.Provider value={todos}>
