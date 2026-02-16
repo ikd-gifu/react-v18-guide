@@ -2,7 +2,7 @@
 const Example = () => {
   const ClickHandler = () => {
     // onClick={}の中に関数を定義してもいいが、可読性の観点から関数は外に定義することが多い
-    alert('ボタンがクリックされました。'); // returnしていないのでunsefinedが返される
+    alert('ボタンがクリックされました。'); // returnしていないのでundefinedが返される
   }
   const AnotherClickHandler = () => {
     console.log('別のボタンがクリックされました。');
@@ -24,4 +24,23 @@ const Example = () => {
 };
 
 export default Example;
-// 4:48 ~
+
+// アロー関数
+// アロー関数の=>の右側は関数の処理内容なので、そこに書くコードは通常のJavaScriptの実行文として扱われます
+// onClick={() => ClickHandler()}
+//        ↑
+//        ここから先は「関数の中身」なので
+//        関数を実行したければ()が必要
+
+// 通常の関数
+// function handleClick() {
+//   ClickHandler()  // ← 関数本体の中では関数を実行するために()が必要
+// }
+
+// アロー関数（同じ意味）
+// () => {
+//   ClickHandler()  // ← 関数本体の中では関数を実行するために()が必要
+// }
+
+// アロー関数（波括弧省略形）
+// () => ClickHandler()  // ← これも同じ（単一の式の場合は{}を省略できる）
