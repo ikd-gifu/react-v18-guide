@@ -12,6 +12,8 @@ const Example = () => {
     // console.log(person === person); // true
     // ...personで展開して新しいオブジェクトを作成しているため、personとは異なるオブジェクトになる
     person.name = e.target.value;
+    // 「state を直接変更しない（不変更新）」
+    // setPerson({ ...person, name: ... }) で新しいオブジェクトを作って更新
     console.log({ ...person})
     console.log({ ...person, name: e.target.value, age: 20 })
     setPerson({ ...person, name: e.target.value })

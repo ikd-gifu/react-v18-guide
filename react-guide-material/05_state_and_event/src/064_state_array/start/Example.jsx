@@ -5,6 +5,8 @@ const Example = () => {
   const [nums, setNums] = useState(numArray);
   
   const shuffle = () => {
+    // 「state を直接変更しない（不変更新）」
+    // pop/unshift は破壊的なので、先に [...] でコピーしてから、そのコピーを変更して setNums(...)
     // numsを展開し、新しい配列を定義している。
     const newNums = [ ...nums ];
     // numsの持つ参照をnewNumsに代入する意味になる
