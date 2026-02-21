@@ -5,13 +5,16 @@
 }
 
 .App-start .component.red {
-  padding: 1rem;
+  /* padding: 1rem; */
+  /* .CSSのカスケード（重なり適用）で base の .component が残っているので不要 */
   color: red;
   border: 5px solid red;
 }
 
 .App-start .component.green {
-  padding: 1rem;
+  /* padding: 1rem; */
   color: green;
   border: 5px solid green;
 }
+
+/* https://developer.mozilla.org/ja/docs/Web/CSS/Guides/Cascade/Introduction */
