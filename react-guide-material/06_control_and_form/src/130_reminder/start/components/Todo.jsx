@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import List from './List';
 import Form from './Form';
+import { useState } from 'react';
 
 const Todo = () => {
   const todosList = [
@@ -17,26 +17,27 @@ const Todo = () => {
       content: "郵便出す",
     },
   ];
+
+  // 画面を更新したいので useStateを使う
+  // 複数コンポーネントで使う状態を共通の親に持ち上げる設計（状態のリフトアップ）
   const [todos, setTodos] = useState(todosList);
-  // Todo は state を持つ親なので、削除本体 deleteTodo を持つためここでdeleteTodoを定義
-  const deleteTodo = (id) => { // Listから削除対象のidが渡される
-    // filterを使った配列操作
-    const newTodos = todos.filter((todo) =>{
-      return todo.id !== id; // 対象のidを含めないようにする
-    })
-    setTodos(newTodos)
-  };
+
+  // 子は関数を呼ぶだけ、実際の状態更新は親が担当
+  const deleteTodo = (id) => {
+    const newTodos = todos.filter(todo => todo.id !== id)
+    setTodos(newTodos);
+  }
 
   const createTodo = (todo) => {
-    // オブジェクト型のstateを更新する際はスプレッド演算子を利用する
     setTodos([...todos, todo])
   }
 
   return (
-    <div>
+    <>
+      {/* 関数の参照（住所のようなもの）を渡す */}
       <List todos={todos} deleteTodo={deleteTodo}/>
       <Form createTodo={createTodo}/>
-    </div>
+    </>
   )
 };
 
