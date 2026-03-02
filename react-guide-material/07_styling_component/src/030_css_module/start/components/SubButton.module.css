@@ -1,0 +1,42 @@
+.btn {
+    margin: auto;
+    border-radius: 9999px;
+    border: none;
+    display: block;
+    width: 120px;
+    height: 60px;
+    font-weight: bold;
+    cursor: pointer;
+    background: orange;
+}
+
+.btn:hover {
+    background-color: red;
+}
+
+.btn:active {
+    background-color: purple;
+}
+
+.selected {
+    background-color: pink;
+}
+
+/* HTML要素で指定するとボタン以外にも影響が出てしまうので使わない */
+/* button { // 画面での要素
+    background-color: green;
+} */
+/* button {
+    background-color: green;
+} */
+
+/* idで指定できるが、あまり使わない。classで指定する */
+/* #idAttr {
+    background-color: blue;
+} */
+
+@media (max-width: 600px) {
+    .btn {
+        border-radius: 0;
+    }
+}
