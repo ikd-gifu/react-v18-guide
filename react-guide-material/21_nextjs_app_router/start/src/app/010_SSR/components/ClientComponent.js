@@ -11,6 +11,11 @@ export default function ClientComponent() {
   useEffect(() => {
     setState('client loaded');
   }, [])
+  // エラー Error: async/await is not yet supported in Client Components
+  // async/awaitはサーバーコンポーネントでのみ使用できる
+  // const article = await fetch(`${ENDPOINT}/${params.id}`, {
+  //   next: { revalidate: 10 }
+  // }).then(res => res.json());
 
   return (
     <>

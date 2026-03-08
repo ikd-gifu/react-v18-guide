@@ -10,6 +10,7 @@ import ClientComponent from "./components/ClientComponent";
 import { ENDPOINT } from "@/constants";
 import ArticleList from "@/components/articleList";
 
+// http://localhost:4020/010_SSR/1 ←1, 2, 3と変わる
 export default async function SSR() {
   // React hooksはクライアント側で実行
   // const [state, setState] = useState(undefined);
@@ -27,7 +28,6 @@ export default async function SSR() {
   }).then(res => res.json());
   // cache: 'no-store' キャッシュを利用しない デフォルトはキャッシュして余分なリクエストをしない設定
   // cache: 'force-cache' キャッシュを効かせる（デフォルト）強制再読み込みすると更新する
-
 
   return (
     <>
