@@ -16,3 +16,6 @@ export default function Page() {
     </>
   );
 }
+
+// SG: あらかじめHTMLを生成しサーバーに配置する
+// バックエンド側でNode.jsを動かさない
