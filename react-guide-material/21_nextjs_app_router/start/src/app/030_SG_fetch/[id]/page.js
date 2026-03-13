@@ -1,6 +1,18 @@
 import { ENDPOINT } from "@/constants";
 import Article from "../../../components/article";
 
+// https://nextjs.org/docs/app/api-reference/functions/generate-metadata
+export async function generateMetadata({ params }) {
+  const article = await fetch(`${ENDPOINT}/${params.id}`).then((res) =>
+    res.json()
+  );
+  console.log(article);
+  return {
+    title: article.title,
+    description: article.text,
+  }
+};
+
 export async function generateStaticParams() {
   // 返り値が Response オブジェクト json()でパース  
   const data = await fetch(ENDPOINT).then(res => res.json());
@@ -15,6 +27,8 @@ export async function generateStaticParams() {
 // params は「URL（+ 静的生成時は generateStaticParams の一覧）」
 // から Next.js が作る
 export default async function Detail({ params }) {
+  console.log(params) // { id: '1' }
+  console.log(params.id) // 1
   const article = await fetch(`${ENDPOINT}/${params.id}`).then((res) =>
     res.json()
   );
