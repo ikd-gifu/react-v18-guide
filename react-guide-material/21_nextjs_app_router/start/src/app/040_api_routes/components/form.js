@@ -9,14 +9,20 @@ export default function ArticleForm() {
     e.preventDefault();
     const form = e.target;
     const formData = new FormData(form);
+    // console.log(form, formData);
 
+    // ブラウザから Next.js の API へ POST （routes.jsのPOSTメソッド）
     fetch('/api/article', { method: form.method, body: formData }).then((res) => {
       if(!res.ok) {
-        return 'エラーが発生しました。'
+        return res.json().then(data => {
+          return data.msg
+        })
       }
+      // responseのJS情報を取得、dataになって返ってくる
       return res.json().then(data => {
         return `${data.id}:${data.title}の登録が完了しました。`
       })
+      // if節の返り値がmsgに入る
     }).then((msg) => {
       setMsg(msg)
     });
@@ -28,6 +34,7 @@ export default function ArticleForm() {
         <label>
           {" "}
           Id:
+          {/* nameプロパティがinput fieldの名前 これがbodyとして送信される */}
           <input type="number" name="id" value={newId} onChange={(e) => setNewId(e.target.value)} />
         </label>
       </div>
