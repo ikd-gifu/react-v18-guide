@@ -23,7 +23,8 @@ export async function GET() {
 // form.jsのPOSTを受け取り、中継し値を取り出しJSONサーバに送信（BFF的な役割）
 export async function POST(request) {
   const formData = await request.formData();
-  const id = formData.get('id');
+  // FormData オブジェクトの中から、指定したキーに関連付けられた最初の値を返す
+  const id = formData.get('id'); // "1"（文字列）
   const title = formData.get('title');
   // console.log(id, title);
 
@@ -41,6 +42,8 @@ export async function POST(request) {
       "Content-Type": "application/json"
       },
       // JavaScript のオブジェクトや値を JSON 文字列に変換
+      // { id: "1", title: "React入門" }（JSオブジェクト）とセットして
+      // {"id":"1","title":"React入門"}（JSON文字列）に変換
       body: JSON.stringify({ id, title })
     });
     // JSON を取って解釈し、 JavaScript のオブジェクトを生成

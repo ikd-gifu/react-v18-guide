@@ -7,14 +7,24 @@ export default function ArticleForm() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    // 送信イベントが発生した form 要素を取得
+    // ここではonSubmitが設定されているreturnで返されるform全体
     const form = e.target;
+    // form の入力値を FormData オブジェクトに入れる
+    // (Web API ブラウザのグローバルオブジェクト)
     const formData = new FormData(form);
     // console.log(form, formData);
 
     // ブラウザから Next.js の API へ POST （routes.jsのPOSTメソッド）
     fetch('/api/article', { method: form.method, body: formData }).then((res) => {
+      // res は Response オブジェクト
+      // ok は Response インターフェイスの読み取り専用プロパティで、
+      // このレスポンスが（ステータスが 200-299 で）成功したかどうかを表す
       if(!res.ok) {
+        // JSON を取って解釈し、 JavaScript のオブジェクトを生成（Promise）
+        // then()はPromise インスタンスのメソッド
         return res.json().then(data => {
+          // return で次の then へ値を渡す
           return data.msg
         })
       }
