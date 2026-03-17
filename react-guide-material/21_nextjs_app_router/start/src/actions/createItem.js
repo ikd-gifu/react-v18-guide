@@ -3,9 +3,11 @@
 "use server"
 import { ENDPOINT } from "@/constants";
 
+export async function createItem(state, formData) { // useFormState
 // formDataにはFormDataのオブジェクトが渡ってくる
-export async function createItem(formData) {
+// export async function createItem(formData) { // Server Action
   // "use server" // 関数内に設定しても良い
+  console.log(state); // { msg: null } 画面に表示される値（state）
   const id = formData.get('id');
   const title = formData.get('title');
   // console.log(id, title); // 1 1111
@@ -35,7 +37,8 @@ export async function createItem(formData) {
     const data = await res.json(); // サーバーから返ってくるJSON文字列を、JavaScriptオブジェクトへ変換
     // return Response.json(data); 
     // JavaScript値を JSON文字列にして、ResponseとしてAPIの戻り値に設定する
-    return data; // この設定でResponseオブジェクトとして返る
+    // return data; // この設定でResponseオブジェクトとして返る
+    return { msg: `${data.id}:${data.title}の登録が完了しました。` }
   } catch(e) {
     // return Response.json({ msg: '登録に失敗しました。' }, { status: 500 })
     // status codeは設定できない
